@@ -1,6 +1,7 @@
 package com.ibm.demo;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ibm.demo.entity.Order;
 import com.ibm.demo.service.OrderService;
 
+
 @RestController // Bean
 public class OrderController { // frontend
 	@Autowired // is used for DI
@@ -40,7 +42,7 @@ public class OrderController { // frontend
 	}
 
 	@GetMapping("/order/{id}")
-	Order getOrder(@PathVariable("id") int orderId) {
+	Optional<Order> getOrder(@PathVariable("id") String orderId) {
 		return orderService.getOrder(orderId);
 	}
 
